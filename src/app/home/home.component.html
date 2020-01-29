@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <span class="menu-item">Gestion impot</span>
+
+    <span class="menu-item example-fill-remaining-space"></span>
+
+    <button mat-raised-button>Ajouter</button>
+    <span class="menu-item ajout" (click)="openDialog()">Ajouter une habitaion</span>
+</mat-toolbar>
+
+<h2 class="m-5">Liste de habitations</h2>
+<input style="padding-left: 10px">
+<mat-list>
+    <mat-list-item *ngFor="let habit of habitationsToShow" class="list">
+        <mat-icon matListIcon>home</mat-icon>
+        <h3 matLine> {{habit.name}} </h3>
+        <p matLine>
+            <span> {{habit.name}} </span>
+            <span class="demo-2"> -- {{habit.name}} </span>
+        </p>
+        <mat-icon class="icon-action">remove_red_eye</mat-icon>
+        <mat-icon class="icon-action">edit</mat-icon>
+        <mat-icon class="icon-action danger">delete</mat-icon>
+    </mat-list-item>
+</mat-list>

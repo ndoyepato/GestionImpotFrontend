@@ -1,0 +1,12 @@
+<div>
+    <div mat-dialog-content>
+        <h3>Ajouter une nouvelle habitation</h3>
+        <mat-form-field>
+            <input matInput [(ngModel)]="data.name" placeholder="Nom de l'habitation">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Annuler</button>
+        <button mat-button [mat-dialog-close]="data" class="btn btn-primary" cdkFocusInitial>Enregistrer</button>
+    </div>
+</div>
