@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpHeaders, HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpHeaders, HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {throwError} from "rxjs";
 import {Habitation} from './habitation.model';
 
@@ -7,31 +7,82 @@ import {Habitation} from './habitation.model';
 @Injectable({
     providedIn: 'root'
 })
-export class AlerteService {
+export class HabitationService {
 
     constructor(private http: HttpClient) {
     }
 
-    send(habitation: Habitation) {
+    getAllHI() {
+        var url = "http://localhost/api/all-habitation-ind";
+        return this.http.get(
+            url,
+            {
+                headers: HabitationService.getCommonHeadersGet(), observe: 'response'
+            }
+        )
+    }
+
+    getAllHP() {
+        var url = "http://localhost/api/all-habitation-pro";
+        return this.http.get(
+            url,
+            {
+                headers: HabitationService.getCommonHeadersGet(), observe: 'response'
+            }
+        )
+    }
+
+    add(habitation: Habitation) {
+        var url = "";
+        habitation.isIndividual ? url = "http://localhost/api/add-habitation-ind" : "http://localhost/api/add-habitation-pro";
         return this.http.post(
-            "url",
+            url,
             JSON.stringify(habitation),
             {
-                headers: AlerteService.getCommonHeaders()
+                headers: HabitationService.getCommonHeaders(), observe: 'response'
+            }
+        )
+    }
+
+    edit(habitation: Habitation) {
+        var url = "";
+        habitation.isIndividual ? url = "http://localhost/api/edit-habitation-ind" : "http://localhost/api/edit-habitation-pro";
+
+        return this.http.post(
+            url,
+            JSON.stringify(habitation),
+            {
+                headers: HabitationService.getCommonHeaders(), observe: 'response'
+            }
+        )
+    }
+
+    delete(habitation: Habitation) {
+        var url = "";
+        habitation.isIndividual ? url = "http://localhost/api/add-habitation-ind" : "http://localhost/api/add-habitation-pro";
+
+        return this.http.post(
+            url,
+            JSON.stringify(habitation),
+            {
+                headers: HabitationService.getCommonHeaders(), observe: 'response'
             }
         )
     }
 
     private static getCommonHeaders() {
         return new HttpHeaders({
-            "Content-Type": "application/json",
-            //"Authorization": "Bearer " + Config.getUser().token,
+            "Content-Type": "application/x-www-form-urlencoded"
+        });
+    }
+
+    private static getCommonHeadersGet() {
+        return new HttpHeaders({
+            "Content-Type": "application/json"
         });
     }
 
     private handleErrors(error: HttpErrorResponse) {
-        //console.log("requestCodeError");
-        //console.log(JSON.stringify(error));
         return throwError(error);
     }
 }

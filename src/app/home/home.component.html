@@ -3,22 +3,23 @@
 
     <span class="menu-item example-fill-remaining-space"></span>
 
-    <button mat-raised-button>Ajouter</button>
     <span class="menu-item ajout" (click)="openDialog()">Ajouter une habitaion</span>
 </mat-toolbar>
 
+<span class="menu-item ajout" style="background-color: darkgray" (click)="openDialog()">Ajouter une habitaion</span><br>
 <h2 class="m-5">Liste de habitations</h2>
 <input style="padding-left: 10px">
 <mat-list>
-    <mat-list-item *ngFor="let habit of habitationsToShow" class="list">
+    <mat-list-item *ngFor="let habit of habitationsToShow; let i = index" class="list">
         <mat-icon matListIcon>home</mat-icon>
-        <h3 matLine> {{habit.name}} </h3>
+        <h3 matLine> {{habit.proprietaire}} </h3>
         <p matLine>
-            <span> {{habit.name}} </span>
-            <span class="demo-2"> -- {{habit.name}} </span>
+            <span> {{habit.adresse}} </span>
+            <span class="demo-2"> -- {{habit.surface}} </span>
+            <span class="demo-2"> -- {{habit.isIndividual? 'Individuelle' : 'Professionnelle'}} </span>
         </p>
-        <mat-icon class="icon-action">remove_red_eye</mat-icon>
-        <mat-icon class="icon-action">edit</mat-icon>
-        <mat-icon class="icon-action danger">delete</mat-icon>
+        <mat-icon class="icon-action" (click)="onView($event)" [title]="i.toString()">remove_red_eye</mat-icon>
+        <mat-icon class="icon-action" (click)="onEdit($event)" [title]="i.toString()">edit</mat-icon>
+        <mat-icon class="icon-action danger" (click)="onDelete($event)" [title]="i.toString()">delete</mat-icon>
     </mat-list-item>
 </mat-list>

@@ -1,0 +1,41 @@
+<div>
+    <div mat-dialog-content>
+        <h3>Details</h3>
+
+        <input type="checkbox" id="isind" [(ngModel)]="habitation.isIndividual" disabled=""><label for="isind">Habitaion
+        Individuelle</label>
+        <div>
+            <label>Poprietaire</label>
+            <input matInput [(ngModel)]="habitation.proprietaire" placeholder="Nom du proprietaire" disabled="">
+        </div>
+        <div>
+            <label>Adresse</label>
+            <input matInput [(ngModel)]="habitation.adresse" placeholder="Adresse" disabled>
+        </div>
+
+        <div>
+            <label>Surface</label>
+            <input matInput [(ngModel)]="habitation.surface" placeholder="Surface" disabled="">
+        </div>
+        <div>
+            <label>Nombre de piece</label>
+            <input matInput [(ngModel)]="habitation.nbreDePiece" disabled
+                   [ngClass]="habitation.isIndividual ? 'visib' : 'invisib'" placeholder="Nombre de piece">
+        </div>
+
+        <div>
+            <label>Nombre Employer</label>
+            <input matInput [(ngModel)]="habitation.nbreEmploye" disabled
+                   [ngClass]="habitation.isIndividual ? 'invisib' : 'visib'" placeholder="Nombre d'employer">
+        </div>
+
+        <div>
+            <input type="checkbox" id="havep" [(ngModel)]="habitation.havePiscine" disabled="">
+            <label for="havep">Équipée de piscine</label>
+        </div>
+
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Fermer</button>
+    </div>
+</div>

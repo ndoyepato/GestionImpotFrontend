@@ -12,13 +12,21 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {HomeComponent} from './home/home.component';
 import { DialogAddHabitationComponent } from './dialog-add-habitation/dialog-add-habitation.component';
 import {FormsModule} from '@angular/forms';
-import {MatDialogModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { HttpClientModule } from '@angular/common/http';
+import {DialogEditHabitationComponent} from './dialog-edit-habitation/dialog-edit-habitation.component';
+import {DialogDeleteHabitationComponent} from './dialog-delete-habitation/dialog-delete-habitation.component';
+import {DialogViewHabitationComponent} from './dialog-view-habitation/dialog-view-habitation.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
-        DialogAddHabitationComponent
+        DialogAddHabitationComponent,
+        DialogEditHabitationComponent,
+        DialogViewHabitationComponent,
+        DialogDeleteHabitationComponent
     ],
     imports: [
         BrowserModule,
@@ -31,10 +39,15 @@ import {MatDialogModule} from '@angular/material';
         MatFormFieldModule,
         MatFormFieldModule,
         MatDialogModule,
-        FormsModule
+        MatCheckboxModule,
+        FormsModule,
+        HttpClientModule
     ],
     entryComponents: [
-        DialogAddHabitationComponent
+        DialogAddHabitationComponent,
+        DialogEditHabitationComponent,
+        DialogDeleteHabitationComponent,
+        DialogViewHabitationComponent
     ],
 
     providers: [],

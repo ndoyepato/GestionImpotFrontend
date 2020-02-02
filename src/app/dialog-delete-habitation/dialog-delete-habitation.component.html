@@ -1,0 +1,22 @@
+<div [ngClass]="isFail ? 'invisib' : 'visib'">
+    <div [ngClass]="isLoading ? 'invisib' : 'visib'">
+        <div mat-dialog-content>
+            <h3>Voulez vous vraiment supprimer?</h3>
+
+        </div>
+        <div mat-dialog-actions>
+            <button mat-button (click)="onNoClick()">Annuler</button>
+            <button mat-button (click)="delete()" class="btn btn-primary" cdkFocusInitial>Confirmer</button>
+        </div>
+    </div>
+
+    <div [ngClass]="isLoading ? 'visib' : 'invisib'">
+        <p class="text-center text-white">Envoi en cours ....</p>
+    </div>
+</div>
+
+
+<div [ngClass]="isFail ? 'visib' : 'invisib'">
+    <p class="text-center text-white">Echec de l'operation. Verifier votre connexion svp.</p>
+    <button mat-button (click)="toggleFail()">Ok</button>
+</div>

@@ -5,17 +5,17 @@ import {HabitationService} from '../shared/habitation/habitation.service';
 
 
 @Component({
-    selector: 'app-dialog-add-habitation',
-    templateUrl: './dialog-add-habitation.component.html',
-    styleUrls: ['./dialog-add-habitation.component.css']
+    selector: 'app-dialog-edit-habitation',
+    templateUrl: './dialog-edit-habitation.component.html',
+    styleUrls: ['./dialog-edit-habitation.component.css']
 })
-export class DialogAddHabitationComponent implements OnInit {
+export class DialogEditHabitationComponent implements OnInit {
     isLoading = false;
     isFail = false;
 
     constructor(
         public habitationService: HabitationService,
-        public dialogRef: MatDialogRef<DialogAddHabitationComponent>,
+        public dialogRef: MatDialogRef<DialogEditHabitationComponent>,
         @Inject(MAT_DIALOG_DATA) public habitation: Habitation) {
     }
 
@@ -35,8 +35,8 @@ export class DialogAddHabitationComponent implements OnInit {
         this.habitation.isIndividual = !this.habitation.isIndividual;
     }
 
-    add() {
-        this.habitationService.add(this.habitation).subscribe(
+    edit() {
+        this.habitationService.edit(this.habitation).subscribe(
             (result) => {
                 this.isLoading = false;
                 this.dialogRef.close(this.habitation);
